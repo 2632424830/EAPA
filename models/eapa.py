@@ -191,7 +191,7 @@ def load_pretrained_eapa(ckpt_rpath, config, is_eval=False, load_text=False):
     return state_dict
 
 
-class eapaBase(nn.Module):
+class EAPABase(nn.Module):
     def __init__(self, config=None, load_vision_params=False, load_text_params=True,
                  use_contrastive_loss=False, use_affil_loss=False):
         super().__init__()
@@ -220,7 +220,6 @@ class eapaBase(nn.Module):
         image_le_all = image_le_all.transpose(1, 0)
         text_le_all = text_le_all.transpose(1, 0)
         
-        # TODO: label_simi
         le_logits = (torch.bmm(image_le_all, text_le_all.transpose(1, 2))/image_le_all.size(-1)).sum(0)
         
         bsz = image_le_all.shape[0]

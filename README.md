@@ -1,2 +1,2 @@
 # EAPA
-The code is currently being organized.
+The final code will be released after the paper is published.
